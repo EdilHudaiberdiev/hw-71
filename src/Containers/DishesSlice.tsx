@@ -19,7 +19,6 @@ const DishesSlice = createSlice({
     reducers: {
 
 
-
     },
 });
 

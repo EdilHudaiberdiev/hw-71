@@ -1,13 +1,24 @@
 import './App.css'
 import Home from "./Containers/Home/Home";
+import Toolbar from "./Components/UI/Toolbar/Toolbar";
+import {Route, Routes} from "react-router-dom";
+import AddNewDish from "./Containers/AddNewDish/AddNewDish";
 
 const App = () => {
 
   return (
     <>
-      <main>
-          <Home/>
-      </main>
+        <header>
+            <Toolbar/>
+        </header>
+        <main>
+            <Routes>
+                <Route path="/" element={<Home/>}/>
+                <Route path="/new-contact" element={<AddNewDish/>}/>
+                <Route path="*" element={(<h1>Not found</h1>)}/>
+            </Routes>
+        </main>
+
     </>
   )
 };
