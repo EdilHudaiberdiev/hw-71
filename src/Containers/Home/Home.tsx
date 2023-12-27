@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useEffect} from 'react';
 import {getDishes} from '../DishesThunk';
 import Spinner from '../../Components/UI/Spinner/Spinner';
+import DishCard from '../DishCard/DishCard';
 
 const Home = () => {
 
@@ -21,16 +22,7 @@ const Home = () => {
         <>
           {isLoading ? <Spinner/> :
             dishes.map(dish => (
-                <div key={dish.id} className={dish.id}>
-                  <p>{dish.title}</p>
-                  <p>{dish.price}</p>
-                  <img
-                    width="100"
-                    height="100"
-                    src={dish.photo}
-                    alt={dish.title}
-                  />
-                </div>
+            <DishCard key={dish.id} dish={dish}/>
             ))}
         </>
     );

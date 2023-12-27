@@ -1,6 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {IDishes, IDishesForm} from '../types';
-import {addDish, getDishes} from './DishesThunk';
+import {addDish, deleteDish, getDishes} from './DishesThunk';
 
 
 interface tvMoviesState {
@@ -62,6 +62,21 @@ const DishesSlice = createSlice({
       state.isLoading = false;
       state.isError = true;
     })
+
+    builder.addCase(deleteDish.pending, (state) => {
+      state.isLoading = true;
+      state.isError = false;
+    });
+    builder.addCase(deleteDish.fulfilled, (state ) => {
+      state.isLoading = false;
+    });
+    builder.addCase(deleteDish.rejected, (state) => {
+      state.isLoading = false;
+      state.isError = true;
+    });
+
+
+
 
   }
 })

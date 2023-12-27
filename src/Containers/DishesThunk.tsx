@@ -15,3 +15,12 @@ export const addDish = createAsyncThunk(
     async (contact: IDishes) => {
         await axiosApi.post(`dishes.json`, contact);
     });
+
+
+export const deleteDish = createAsyncThunk(
+  'dishes/delete',
+  async (id: string) => {
+    await axiosApi.delete(`dishes/${id}.json`);
+  });
+
+

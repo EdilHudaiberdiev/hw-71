@@ -1,5 +1,5 @@
 export interface IDishes {
-  id?: string
+    id: string
     title: string;
     price: string;
     photo: string;
