@@ -16,6 +16,10 @@ const Toolbar = () => {
                     <li className="nav-item">
                         <NavLink to="/admin/add-new-dish" className="nav-link">Add new Dish</NavLink>
                     </li>
+
+                  <li className="nav-item">
+                    <NavLink to="/user-page" className="nav-link">User Page</NavLink>
+                  </li>
                 </ul>
 
             </div>

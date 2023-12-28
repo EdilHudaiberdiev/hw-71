@@ -1,15 +1,15 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {IDishes, IDishesForm} from '../types';
-import {addDish, deleteDish, getDishes} from './DishesThunk';
+import {addDish, deleteDish, editDish, getDishes} from './DishesThunk';
 
 
-interface tvMoviesState {
+interface dishesState {
     dishes: IDishes[],
     isLoading: boolean;
     isError: boolean;
 }
 
-const initialState: tvMoviesState = {
+const initialState: dishesState = {
     dishes: [],
     isLoading: false,
     isError: false,
@@ -71,6 +71,18 @@ const DishesSlice = createSlice({
       state.isLoading = false;
     });
     builder.addCase(deleteDish.rejected, (state) => {
+      state.isLoading = false;
+      state.isError = true;
+    });
+
+    builder.addCase(editDish.pending, (state) => {
+      state.isLoading = true;
+      state.isError = false;
+    });
+    builder.addCase(editDish.fulfilled, (state ) => {
+      state.isLoading = false;
+    });
+    builder.addCase(editDish.rejected, (state) => {
       state.isLoading = false;
       state.isError = true;
     });

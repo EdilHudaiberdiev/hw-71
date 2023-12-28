@@ -3,8 +3,8 @@ import {IDishes} from '../../types';
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {AppDispatch, RootState} from '../../app/store';
-import {deleteDish, getDishes} from '../DishesThunk';
-import Spinner from '../../Components/UI/Spinner/Spinner';
+import {deleteDish, getDishes} from '../../Containers/DishesThunk';
+import Spinner from '../UI/Spinner/Spinner';
 import {useNavigate} from 'react-router-dom';
 
 interface Props {
@@ -24,7 +24,7 @@ const DishCard:React.FC<Props> = ({dish}) => {
   return (
     <>
     {isLoading ? <Spinner/> :
-      <div key={dish.id} className={dish.id}>
+      <div key={dish.id} className={'border'}>
         <p>{dish.title}</p>
         <p>{dish.price}₽</p>
         <img
@@ -37,7 +37,7 @@ const DishCard:React.FC<Props> = ({dish}) => {
         <button
           onClick={() => deleteContactById(dish.id)}
           type="button"
-          className="ms-3 btn btn-danger"
+          className="ms-3 me-1 btn btn-danger"
         >Delete</button>
 
         <button

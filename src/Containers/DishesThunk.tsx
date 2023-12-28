@@ -12,8 +12,8 @@ export const getDishes = createAsyncThunk(
 
 export const addDish = createAsyncThunk(
     'dishes/add',
-    async (contact: IDishes) => {
-        await axiosApi.post(`dishes.json`, contact);
+    async (dish: IDishes) => {
+        await axiosApi.post(`dishes.json`, dish);
     });
 
 
@@ -23,4 +23,15 @@ export const deleteDish = createAsyncThunk(
     await axiosApi.delete(`dishes/${id}.json`);
   });
 
+export const editDish = createAsyncThunk(
+  'dishes/edit',
+  async (dish: IDishes) => {
+    const dishCopy: IDishes = {...dish};
+
+    if ('id' in dishCopy) {
+      delete dishCopy.id;
+    }
+
+    await axiosApi.put<IDishes>(`dishes/${dish.id}.json`, dishCopy);
+  });
 
