@@ -9,15 +9,15 @@ import DishSendForm from '../../Components/DishSendForm/DishSendForm';
 
 const AddNewDish = () => {
 
-    const dispatch: AppDispatch = useDispatch();
-    const Navigation = useNavigate();
-    const isLoading = useSelector((state: RootState) => state.dishes.isLoading);
-    const [OneDish, setOneDish] = useState<IDishesForm>({
-        id: '',
-        title: '',
-        price: '',
-        photo: '',
-    });
+  const dispatch: AppDispatch = useDispatch();
+  const Navigation = useNavigate();
+  const isLoading = useSelector((state: RootState) => state.dishes.isLoading);
+  const [OneDish, setOneDish] = useState<IDishesForm>({
+    id: '',
+    title: '',
+    price: '',
+    photo: '',
+  });
 
   const changeForm = (e: React.ChangeEvent<HTMLInputElement>) => {
     setOneDish((prev) => ({
@@ -26,30 +26,30 @@ const AddNewDish = () => {
     }));
   };
 
-    const onFormSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
+  const onFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
 
-        try {
-            await dispatch(addDish(OneDish));
-            Navigation('/');
-        } catch (e) {
-            alert('Something gone wrong');
-        }
-    };
+    try {
+      await dispatch(addDish(OneDish));
+      Navigation('/');
+    } catch (e) {
+      alert('Something gone wrong');
+    }
+  };
 
-    return (
-        <>
-          {isLoading ? <Spinner/> :
-            <DishSendForm
-              titleForm={'Add dish'}
-              OneDish={OneDish}
-              onFormSubmit={onFormSubmit}
-              changeForm={changeForm}
-              btnText='Add'
-            />
-          }
-      </>
-    );
+  return (
+    <>
+      {isLoading ? <Spinner/> :
+        <DishSendForm
+          titleForm={'Add dish'}
+          OneDish={OneDish}
+          onFormSubmit={onFormSubmit}
+          changeForm={changeForm}
+          btnText='Add'
+        />
+      }
+    </>
+  );
 };
 
 export default AddNewDish;

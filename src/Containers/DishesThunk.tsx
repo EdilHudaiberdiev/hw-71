@@ -3,18 +3,18 @@ import axiosApi from "../axiosApi";
 import {IDishes} from "../types";
 
 export const getDishes = createAsyncThunk(
-    'dishes/get',
-    async () => {
-        const response = await axiosApi.get(`dishes.json` );
-        return response.data ?? [];
-    });
+  'dishes/get',
+  async () => {
+    const response = await axiosApi.get(`dishes.json` );
+    return response.data ?? [];
+  });
 
 
 export const addDish = createAsyncThunk(
-    'dishes/add',
-    async (dish: IDishes) => {
-        await axiosApi.post(`dishes.json`, dish);
-    });
+  'dishes/add',
+  async (dish: IDishes) => {
+    await axiosApi.post(`dishes.json`, dish);
+  });
 
 
 export const deleteDish = createAsyncThunk(
@@ -35,3 +35,15 @@ export const editDish = createAsyncThunk(
     await axiosApi.put<IDishes>(`dishes/${dish.id}.json`, dishCopy);
   });
 
+export const getOrders = createAsyncThunk(
+  'get/get-order',
+  async () => {
+    const response = await axiosApi.get(`orders.json`);
+    return response.data ?? [];
+  });
+
+export const makeOrder = createAsyncThunk(
+  'post/add-order',
+  async (cart: {[key: string]: number}) => {
+    await axiosApi.post(`orders.json`, cart);
+  })

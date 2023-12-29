@@ -1,15 +1,15 @@
 export interface IDishes {
-    id: string;
-    title: string;
-    price: string;
-    photo: string;
+  id?: string;
+  title: string;
+  price: number;
+  photo: string;
 }
 
 export interface IDishesForm {
-    id: string
-    title: string;
-    price: string;
-    photo: string;
+  id: string
+  title: string;
+  price: number;
+  photo: string;
 }
 
 export interface CartDish {

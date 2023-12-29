@@ -6,13 +6,14 @@ import Spinner from '../../Components/UI/Spinner/Spinner';
 import DishCard from '../../Components/DishCard/DishCard';
 const UserPage = () => {
 
+
   const dishes = useSelector((state: RootState) => state.dishes.dishes);
   const isLoading = useSelector((state: RootState) => state.dishes.isLoading);
   const dispatch: AppDispatch = useDispatch();
 
+
   useEffect(() => {
     dispatch(getDishes());
-    console.log( dispatch(getDishes()))
   }, [dispatch]);
 
   return (

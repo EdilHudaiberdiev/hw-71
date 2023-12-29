@@ -17,38 +17,36 @@ const DishCard:React.FC<Props> = ({dish}) => {
   const Navigation = useNavigate();
 
   const deleteContactById = async (id: string) => {
-    if (id !== undefined) {
-      await dispatch(deleteDish(id));
-      await dispatch(getDishes());
-    }
+    await dispatch(deleteDish(id));
+    await dispatch(getDishes());
   };
 
   return (
     <>
-    {isLoading ? <Spinner/> :
-      <div key={dish.id} className={'border'}>
-        <p>{dish.title}</p>
-        <p>{dish.price}₽</p>
-        <img
-          width="100"
-          height="100"
-          src={dish.photo}
-          alt={dish.title}
-        />
+      {isLoading ? <Spinner/> :
+        <div className={'border'}>
+          <p>{dish.title}</p>
+          <p>{dish.price}₽</p>
+          <img
+            width="100"
+            height="100"
+            src={dish.photo}
+            alt={dish.title}
+          />
 
-        <button
-          onClick={() => deleteContactById(dish.id)}
-          type="button"
-          className="ms-3 me-1 btn btn-danger"
-        >Delete</button>
+          <button
+            onClick={() => deleteContactById(dish.id)}
+            type="button"
+            className="ms-3 me-1 btn btn-danger"
+          >Delete</button>
 
-        <button
-          onClick={() => Navigation(`/edit-dish/${dish.id}`)}
-          type="button"
-          className="btn btn-warning"
-        >Edit</button>
-      </div>
-    }
+          <button
+            onClick={() => Navigation(`/edit-dish/${dish.id}`)}
+            type="button"
+            className="btn btn-warning"
+          >Edit</button>
+        </div>
+      }
     </>
   );
 };
