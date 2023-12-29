@@ -17,8 +17,10 @@ const DishCard:React.FC<Props> = ({dish}) => {
   const Navigation = useNavigate();
 
   const deleteContactById = async (id: string) => {
-    await dispatch(deleteDish(id));
-    await dispatch(getDishes());
+    if (id !== undefined) {
+      await dispatch(deleteDish(id));
+      await dispatch(getDishes());
+    }
   };
 
   return (

@@ -86,10 +86,6 @@ const DishesSlice = createSlice({
       state.isLoading = false;
       state.isError = true;
     });
-
-
-
-
   }
 })
 
